@@ -1,0 +1,8 @@
+numpy
+pandas
+networkx
+openai
+langchain
+tensorflow
+jupyter
+scikit-learn

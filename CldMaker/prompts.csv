@@ -1,0 +1,13 @@
+﻿Case,dynamic_hypothesis,variables,label_graphs
+,"The order rate decision, if it is to bring actual inventory towards desired inventory, must increase the order rate as inventory falls below desired inventory. Conversely, as inventory rises toward the desired inventory, order rate should be reduced","order rate, inventory, desired inventory, adjustment time","digraph {
+""order rate"" -> ""inventory"" [arrowhead = vee]
+""inventory""->""order rate""[arrowhead = tee] 
+""desired inventory"" -> ""order rate""[arrowhead = vee] 
+""adjustment time"" -> ""order rate""[arrowhead = tee] 
+}"
+,"A hot cup of coffee will gradually cool down to room temperature. It's rate of cooling depends on the difference between the temperature of the coffee and the temperature of the room. The greater the difference, the faster the coffee will cool.","coffee temperature, discrepancy, cooling rate, room temperature","digraph {
+""coffee temperature"" -> ""discrepancy"" [arrowhead = vee] 
+""discrepancy""->""cooling rate""[arrowhead = vee] 
+""cooling rate"" -> ""coffee temperature""[arrowhead = tee] 
+""room temperature"" -> ""discrepancy""[arrowhead = tee] 
+}"
