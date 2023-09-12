@@ -36,7 +36,7 @@ setup(
     url="https://github.com/georgia-max/CldMaker/",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    author="author_name",
+    author="georgia-mac",
     packages=find_packages(exclude=["tests", ".github"]),
     install_requires=read_requirements("requirements.txt"),
     entry_points={
