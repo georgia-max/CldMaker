@@ -1,0 +1,6 @@
+digraph {
+"coffee temperature" -> "discrepancy" [arrowhead = vee] 
+"discrepancy"->"cooling rate"[arrowhead = vee] 
+"cooling rate" -> "coffee temperature"[arrowhead = tee] 
+"room temperature" -> "discrepancy"[arrowhead = tee] 
+}

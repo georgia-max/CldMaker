@@ -89,7 +89,6 @@ class CLD(nx.MultiDigraph):
         )
         return a
 
-    ###
 
 def get_graph_distance(g1, g2):
     paths, cost = nx.optimal_edit_paths(g1,g2)
