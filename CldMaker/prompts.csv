@@ -1,13 +1,94 @@
-﻿Case,dynamic_hypothesis,variables,label_graphs
-,"The order rate decision, if it is to bring actual inventory towards desired inventory, must increase the order rate as inventory falls below desired inventory. Conversely, as inventory rises toward the desired inventory, order rate should be reduced","order rate, inventory, desired inventory, adjustment time","digraph {
+﻿Case,dynamic_hypothesis,variables,label_graphs,
+1,"The order rate decision, if it is to bring actual inventory towards desired inventory, must increase the order rate as inventory falls below desired inventory. Conversely, as inventory rises toward the desired inventory, order rate should be reduced","order rate, inventory, desired inventory, adjustment time","digraph {
 ""order rate"" -> ""inventory"" [arrowhead = vee]
 ""inventory""->""order rate""[arrowhead = tee] 
 ""desired inventory"" -> ""order rate""[arrowhead = vee] 
 ""adjustment time"" -> ""order rate""[arrowhead = tee] 
-}"
-,"A hot cup of coffee will gradually cool down to room temperature. It's rate of cooling depends on the difference between the temperature of the coffee and the temperature of the room. The greater the difference, the faster the coffee will cool.","coffee temperature, discrepancy, cooling rate, room temperature","digraph {
+}",
+2,"A hot cup of coffee will gradually cool down to room temperature. It's rate of cooling depends on the difference between the temperature of the coffee and the temperature of the room. The greater the difference, the faster the coffee will cool.","coffee temperature, discrepancy, cooling rate, room temperature","digraph {
 ""coffee temperature"" -> ""discrepancy"" [arrowhead = vee] 
 ""discrepancy""->""cooling rate""[arrowhead = vee] 
 ""cooling rate"" -> ""coffee temperature""[arrowhead = tee] 
 ""room temperature"" -> ""discrepancy""[arrowhead = tee] 
-}"
+}",
+3,"The number of E. coli bacteria in the flask influences the reproduction rate which, in turn, influences the number of E. coli bacteria.  Increasing the number of E. coli bacteria will in turn increase the reproduction rate, which compounds the initial increase of the number of E. coli bacteria in the shaking flask.",,"digraph {
+""E. Coli Bacteria"" -> ""reproduction"" [arrowhead = vee] 
+""reproduction""->""E. Coli Bacteria""[arrowhead = vee] 
+""Reproduction Fraction"" -> ""reproduction""[arrowhead = vee] 
+}",
+4,"The more my uncle smokes, the more addicted he becomes to the nicotine in his cigarettes. After smoking a few cigarettes a long time ago, my uncle began to develop a need for cigarettes. The need caused him to smoke even more, which produced an even stronger need to smoke. The reinforcing behavior in the addiction process is characteristic of positive feedback.",,"digraph {
+""smoking"" -> ""cigarettes smoked"" [arrowhead = vee] 
+""cigarettes smoked""->""need for cigarettes""[arrowhead = vee] 
+""need for cigarettes"" -> ""smoking""[arrowhead = vee]
+""addiction time"" -> ""smoking"" [arrowhead = tee]
+}",
+5,"Negative feedback system is the gradual decay of radioactive nuclei. Every year, a fraction of the total number of radioactive nuclei decays.",,"digraph {
+""radioactive nuclei"" -> ""decay"" [arrowhead = tee] 
+""decay""->""radioactive nuclei""[arrowhead = vee] 
+""decay constant"" -> ""decay""[arrowhead = vee]
+}",
+6,"The more I am overweight, the more I diet, which makes me less overweight. As my weight approaches my desired weight, I feel less pressured to diet.",,"digraph {
+""dieting"" -> ""weight"" [arrowhead = tee] 
+""weight""->""amount overweight""[arrowhead = vee] 
+""amount overweight"" -> ""dieting""[arrowhead = vee]
+""time for dieting to reduce weight"" -> ""dieting""[arrowhead = tee]
+""desired weight""->""amount overweight""[arrowhead = tee] 
+}",
+7,"The larger the population, the greater the number of births. increases, the faster the population increases. The more the birth rate increases, the faster the population increases.",,"digraph {
+""births"" -> ""rabbit population"" [arrowhead = vee] 
+""rabbit population""->""births""[arrowhead = vee] 
+""birth fraction"" -> ""births""[arrowhead = vee]
+}",
+8,"The number of deaths each year is a certain fraction of the skunk population. The death fraction represents the mortality of the population. A large skunk population has a high death rate, which sharply reduces the population. As the population decreases, the death rate becomes less drastic, causing the population to continue to decrease, but not as severely. Eventually, all the skunks die.",,"digraph {
+""skunk population"" -> ""deaths"" [arrowhead = vee] 
+""deaths""->""skunk population""[arrowhead = tee] 
+""death fraction"" -> ""deaths""[arrowhead = vee]
+}",
+9,"Interest payments are calculated by multiplying the amount of money in a bank account by a given interest rate. The more money is in the account, the higher the interest payments, which adds even more money into the account. The rich get richer.",,"digraph {
+""interest payments"" -> ""money in bank account"" [arrowhead = vee] 
+""money in bank account""->""interest payments""[arrowhead = vee] 
+""interest rate"" -> ""interest payments""[arrowhead = vee]
+}",
+10,"Food takes time to digest. The more brownies you have in your stomach, the more brownies you digest, which increases the rate at which brownies leave your stomach. As the number of brownies in your stomach decreases, the digesting rate slows down until all of the brownies have been digested.",,"digraph {
+""brownies in stomach"" -> ""digesting"" [arrowhead = vee] 
+""digesting""->""brownies in stomach""[arrowhead = tee] 
+""time to digest"" -> ""digesting""[arrowhead = tee]
+}",
+11,"As the number of infected people increases, so does the rate of contagion. In turn, more and more people will be infected with the illness.",,"digraph {
+""contagion"" -> ""infected people"" [arrowhead = vee] 
+""infected people""->""contagion""[arrowhead = vee] 
+""infection fraction"" -> ""contagion""[arrowhead = vee]
+}",
+12,"Someone shouts “fire!” in a theater. As people panic, the spread of panic increases. Across the theater hall, more and more people try to rush out. As the spread of panic increases, the total amount of panic skyrockets.",,"digraph {
+""spread of panic"" -> ""panic"" [arrowhead = vee] 
+""panic""->""spread of panic""[arrowhead = vee] 
+""spreading fraction"" -> ""spread of panic""[arrowhead = vee]
+}",
+13,"Car production builds the inventory of cars at the dealer. A hgiher inventory leads to a lower market price, and lower market prices cause less car production in the future. There is only one negative arrow in the producution loop, so we know that this is negative feedback. This loop describes the effect of the supply curve from your study of ecomomics. If the price were to increase, the retail sale of cars would tend to fall. Retails sales drain the inventory of cars held in stock at the dealership. And a decline in the inventory will cause the dealers to raise their prices in the future. ",,"digraph {
+""inventory of cars at dealership"" -> ""market price"" [arrowhead = tee] 
+""market price""->""car production""[arrowhead = vee] 
+""car production"" -> ""inventory of cars at dealership""[arrowhead = vee]
+""market price"" -> ""retail car sales""[arrowhead = tee]
+""retail car sales""-> ""inventory of cars at dealership""[arrowhead = tee]
+}",p102
+14,"a larger population leads to a higher number of births, and higher births leads to a higher populatioh. The larger population will tend to have a greater number of deaths. ",,"digraph {
+""births"" -> ""population"" [arrowhead = vee] 
+""population""->""births""[arrowhead = vee] 
+""population""->""deaths""[arrowhead = vee] 
+""deaths""->""population""[arrowhead = tee] 
+""brith rate""->""births""[arrowhead = vee] 
+""death rate""->""deaths""[arrowhead = vee] 
+}",p99
+15,There is a single positive feedback loop involving the decay of flowers area over time. There is a single negative loop involving the decay of flowered area over time. The third loop acts to slow the rate of growht as the flowers occupy a larger faction of the suitable area. ,,"digraph {
+""flowered area"" -> ""growth"" [arrowhead = vee] 
+""growth""->""flowered area""[arrowhead = vee] 
+""flowered area""->""decay""[arrowhead = vee] 
+""decay""->""flowered area""[arrowhead = tee] 
+""decay""->""empty area""[arrowhead = vee] 
+""decay rate""->""decay""[arrowhead = vee] 
+""growth""->""empty area""[arrowhead = tee] 
+""growth rate""->""growth""[arrowhead = vee] 
+""fraction occupied""->""growth rate""[arrowhead = tee] 
+""suitable area""->""fraction occupied""[arrowhead = tee] 
+""flowered area""->""fraction occupied""[arrowhead = vee] 
+}",p108

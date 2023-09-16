@@ -49,13 +49,13 @@ from IPython.display import display
 #     return g
 
 
-def render_gvz(dot_source: str, name: str):
+def render_gvz(dot_source: str, name: str, file_name: str):
     """
     Renders the graphviz image given DOT format. 
     """
-    g = graphviz.Source(dot_source)
+    g = graphviz.Source(dot_source) 
     display(g)
-    g.render(filename=f'img/{name}', format = 'png')
+    g.render(filename=f'img/{file_name}_{name}', format = 'png')
     return None
 
 
