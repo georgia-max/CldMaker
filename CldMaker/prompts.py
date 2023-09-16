@@ -9,28 +9,6 @@ from langchain.evaluation.criteria.eval_chain import CriteriaEvalChain
 from typing import List, Dict, Tuple, Any, Optional, Union
 import pandas as pd
 
-config =[
-    {
-        'input_variables':['dynamic_hypothesis'],
-        'output_variables':['variables'],
-        'prompt_prefix':'''
-        Render a list of variable names from the text given.
-
-        The variable names in
-        '''
-        ###Write up
-    },
-    {
-        'input_variables':['variables','dynamic_hypothesis'],
-        'output_variables':['label_graphs'],
-        'prompt_prefix':'''
-        Render a dot format of variable names from the text given.
-
-
-        '''
-        ###Write up
-    }
-]
 
 def make_few_shot_prompt(
     input_variables: List[str],

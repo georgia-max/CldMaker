@@ -1,0 +1,3 @@
+
+Web application for OpenAi API
+https://tectalic.com/blog/build-an-app-using-openai-api 
