@@ -19,6 +19,7 @@ def make_few_shot_prompt(
 )-> FewShotPromptTemplate:
 
   all_variables = input_variables+ output_variables
+  print(all_variables)
 
   few_shot_prompt = FewShotPromptTemplate(
       examples = examples_df[all_variables].to_dict('records'),
