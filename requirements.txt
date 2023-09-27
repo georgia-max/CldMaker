@@ -10,3 +10,4 @@ graphviz
 python-docx  
 nltk
 regex
+Flask == 2.0.2

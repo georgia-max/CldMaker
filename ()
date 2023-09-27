@@ -1,0 +1,37 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   .DS_Store
+#	modified:   .gitignore
+#	modified:   CldMaker/.DS_Store
+#	modified:   CldMaker/Automating_CLD.ipynb
+#	new file:   CldMaker/FewShot
+#	modified:   CldMaker/__pycache__/graphviz_analysis.cpython-311.pyc
+#	new file:   CldMaker/__pycache__/print_result.cpython-311.pyc
+#	modified:   CldMaker/__pycache__/prompts.cpython-311.pyc
+#	new file:   CldMaker/dataset/.DS_Store
+#	modified:   CldMaker/dataset/prompts_vars.csv
+#	modified:   CldMaker/dataset/prompts_vars.xlsx
+#	modified:   CldMaker/get_vars.ipynb
+#	modified:   CldMaker/graphviz_analysis.py
+#	modified:   CldMaker/notes.txt
+#	new file:   CldMaker/print_result.py
+#	modified:   CldMaker/prompts.py
+#	modified:   CldMaker/test/__pycache__/test_graph_analysis.cpython-311-pytest-7.4.2.pyc
+#	modified:   CldMaker/test/test_graph_analysis.py
+#	new file:   CldMaker/~$Result.docx
+#	modified:   requirements.txt
+#	modified:   setup.py
+#
+# Changes not staged for commit:
+#	modified:   CldMaker/
+:wq()
+
+
+Automating_CLDgggggg
+g

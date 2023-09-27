@@ -19,7 +19,6 @@ def make_few_shot_prompt(
 )-> FewShotPromptTemplate:
 
   all_variables = input_variables+ output_variables
-  print(all_variables)
 
   few_shot_prompt = FewShotPromptTemplate(
       examples = examples_df[all_variables].to_dict('records'),
@@ -96,7 +95,7 @@ def make_few_shot_sequential_chain(
 def apply_chain_on_df(chain: SequentialChain,
                       df: pd.DataFrame,
                       output_suffix: str = '_out') -> pd.DataFrame:
-
+    
     results_df = pd.DataFrame(
         [chain(row[chain.input_variables].to_dict())
         for _,row in df.iterrows()],

@@ -41,18 +41,18 @@ if __name__ == '__main__':
 
     prompts_df = pd.read_csv('CldMaker/dataset/prompts_vars.csv', index_col= 0, dtype= 'str')
     
-    file1 = open("CldMaker/outputs/zeroshot.txt","w")
+    # file1 = open("CldMaker/outputs/zeroshot.txt","w")
 
-    for ind in prompts_df.index:
-        dynamic_h = prompts_df.loc[ind, 'dynamic_hypothesis']
-        print("case", ind)
-        response = zeroShot.print_cld(dynamic_h=dynamic_h)
-        file1.write(response + '\n')
+    # for ind in prompts_df.index:
+    #     dynamic_h = prompts_df.loc[ind, 'dynamic_hypothesis']
+    #     print("case", ind)
+    #     response = zeroShot.print_cld(dynamic_h=dynamic_h)
+    #     file1.write(response + '\n')
     
-    file1.close()
+    # file1.close()
     
     # dynamic_h = get_dynamic_h()
-    # dynamic_h = """a larger population leads to a higher number of births, 
-    #             and higher births leads to a higher populatioh. 
-    #             The larger population will tend to have a greater number of deaths. """
-    # zeroShot.print_cld(dynamic_h=dynamic_h)
+    dynamic_h = """a larger population leads to a higher number of births, 
+                and higher births leads to a higher populatioh. 
+                The larger population will tend to have a greater number of deaths. """
+    zeroShot.print_cld(dynamic_h=dynamic_h)
