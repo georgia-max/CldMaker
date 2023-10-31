@@ -12,3 +12,4 @@ nltk
 regex
 Flask == 2.0.2
 Werkzeug==2.2.2
+pytest==7.4.3
