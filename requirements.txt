@@ -11,3 +11,4 @@ python-docx
 nltk
 regex
 Flask == 2.0.2
+Werkzeug==2.2.2
