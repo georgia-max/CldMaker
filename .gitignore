@@ -3,3 +3,4 @@ venv/
 *.png
 img/
 outputs/
+.pytest_cache/
