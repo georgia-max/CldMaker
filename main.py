@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request
-import cld_maker
+from CldMaker import cld_maker
 
 app = Flask(__name__)
 
