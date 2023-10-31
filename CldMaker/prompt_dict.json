@@ -1,154 +1,154 @@
 [
-    {
-        "Case": "1",
-        "dynamic_hypothesis": "The order rate decision, if it is to bring actual inventory towards desired inventory, must increase the order rate as inventory falls below desired inventory. Conversely, as inventory rises toward the desired inventory, order rate should be reduced",
-        "variables": "order rate,inventory,desired inventory,adjustment time",
-        "label_graphs": "digraph {{\n\"order rate\" -> \"inventory\" [arrowhead = vee]\n\"inventory\"->\"order rate\"[arrowhead = tee] \n\"desired inventory\" -> \"order rate\"[arrowhead = vee] \n\"adjustment time\" -> \"order rate\"[arrowhead = tee] \n}}",
-        "nx_graph": "DiGraph with 4 nodes and 4 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "2",
-        "dynamic_hypothesis": "A hot cup of coffee will gradually cool down to room temperature. It's rate of cooling depends on the difference between the temperature of the coffee and the temperature of the room. The greater the difference, the faster the coffee will cool.",
-        "variables": "coffee temperature,discrepancy,cooling rate,room temperature",
-        "label_graphs": "digraph {{\n\"coffee temperature\" -> \"discrepancy\" [arrowhead = vee] \n\"discrepancy\"->\"cooling rate\"[arrowhead = vee] \n\"cooling rate\" -> \"coffee temperature\"[arrowhead = tee] \n\"room temperature\" -> \"discrepancy\"[arrowhead = tee] \n}}",
-        "nx_graph": "DiGraph with 4 nodes and 4 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "3",
-        "dynamic_hypothesis": "The number of E. coli bacteria in the flask influences the reproduction rate which, in turn, influences the number of E. coli bacteria.  Increasing the number of E. coli bacteria will in turn increase the reproduction rate, which compounds the initial increase of the number of E. coli bacteria in the shaking flask.",
-        "variables": "E. Coli Bacteria,reproduction,Reproduction Fraction",
-        "label_graphs": "digraph {{\n\"E. Coli Bacteria\" -> \"reproduction\" [arrowhead = vee] \n\"reproduction\"->\"E. Coli Bacteria\"[arrowhead = vee] \n\"Reproduction Fraction\" -> \"reproduction\"[arrowhead = vee] \n}}",
-        "nx_graph": "DiGraph with 3 nodes and 3 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "4",
-        "dynamic_hypothesis": "The more my uncle smokes, the more addicted he becomes to the nicotine in his cigarettes. After smoking a few cigarettes a long time ago, my uncle began to develop a need for cigarettes. The need caused him to smoke even more, which produced an even stronger need to smoke. The reinforcing behavior in the addiction process is characteristic of positive feedback.",
-        "variables": "smoking,cigarettes smoked,need for cigarettes,addiction time",
-        "label_graphs": "digraph {{\n\"smoking\" -> \"cigarettes smoked\" [arrowhead = vee] \n\"cigarettes smoked\"->\"need for cigarettes\"[arrowhead = vee] \n\"need for cigarettes\" -> \"smoking\"[arrowhead = vee]\n\"addiction time\" -> \"smoking\" [arrowhead = tee]\n}}",
-        "nx_graph": "DiGraph with 4 nodes and 4 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "5",
-        "dynamic_hypothesis": "Negative feedback system is the gradual decay of radioactive nuclei. Every year, a fraction of the total number of radioactive nuclei decays.",
-        "variables": "radioactive nuclei,decay,decay constant",
-        "label_graphs": "digraph {{\n\"radioactive nuclei\" -> \"decay\" [arrowhead = tee] \n\"decay\"->\"radioactive nuclei\"[arrowhead = vee] \n\"decay constant\" -> \"decay\"[arrowhead = vee]\n}}",
-        "nx_graph": "DiGraph with 3 nodes and 3 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "6",
-        "dynamic_hypothesis": "The more I am overweight, the more I diet, which makes me less overweight. As my weight approaches my desired weight, I feel less pressured to diet.",
-        "variables": "dieting,weight,amount overweight,time for dieting to reduce weight,desired weight",
-        "label_graphs": "digraph {{\n\"dieting\" -> \"weight\" [arrowhead = tee] \n\"weight\"->\"amount overweight\"[arrowhead = vee] \n\"amount overweight\" -> \"dieting\"[arrowhead = vee]\n\"time for dieting to reduce weight\" -> \"dieting\"[arrowhead = tee]\n\"desired weight\"->\"amount overweight\"[arrowhead = tee] \n}}",
-        "nx_graph": "DiGraph with 5 nodes and 5 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "7",
-        "dynamic_hypothesis": "The larger the population, the greater the number of births. increases, the faster the population increases. The more the birth rate increases, the faster the population increases.",
-        "variables": "births,rabbit population,birth fraction",
-        "label_graphs": "digraph {{\n\"births\" -> \"rabbit population\" [arrowhead = vee] \n\"rabbit population\"->\"births\"[arrowhead = vee] \n\"birth fraction\" -> \"births\"[arrowhead = vee]\n}}",
-        "nx_graph": "DiGraph with 3 nodes and 3 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "8",
-        "dynamic_hypothesis": "The number of deaths each year is a certain fraction of the skunk population. The death fraction represents the mortality of the population. A large skunk population has a high death rate, which sharply reduces the population. As the population decreases, the death rate becomes less drastic, causing the population to continue to decrease, but not as severely. Eventually, all the skunks die.",
-        "variables": "skunk population,deaths,death fraction",
-        "label_graphs": "digraph {{\n\"skunk population\" -> \"deaths\" [arrowhead = vee] \n\"deaths\"->\"skunk population\"[arrowhead = tee] \n\"death fraction\" -> \"deaths\"[arrowhead = vee]\n}}",
-        "nx_graph": "DiGraph with 3 nodes and 3 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "9",
-        "dynamic_hypothesis": "Interest payments are calculated by multiplying the amount of money in a bank account by a given interest rate. The more money is in the account, the higher the interest payments, which adds even more money into the account. The rich get richer.",
-        "variables": "interest payments,money in bank account,interest rate",
-        "label_graphs": "digraph {{\n\"interest payments\" -> \"money in bank account\" [arrowhead = vee] \n\"money in bank account\"->\"interest payments\"[arrowhead = vee] \n\"interest rate\" -> \"interest payments\"[arrowhead = vee]\n}}",
-        "nx_graph": "DiGraph with 3 nodes and 3 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "10",
-        "dynamic_hypothesis": "Food takes time to digest. The more brownies you have in your stomach, the more brownies you digest, which increases the rate at which brownies leave your stomach. As the number of brownies in your stomach decreases, the digesting rate slows down until all of the brownies have been digested.",
-        "variables": "brownies in stomach,digesting,time to digest",
-        "label_graphs": "digraph {{\n\"brownies in stomach\" -> \"digesting\" [arrowhead = vee] \n\"digesting\"->\"brownies in stomach\"[arrowhead = tee] \n\"time to digest\" -> \"digesting\"[arrowhead = tee]\n}}",
-        "nx_graph": "DiGraph with 3 nodes and 3 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "11",
-        "dynamic_hypothesis": "As the number of infected people increases, so does the rate of contagion. In turn, more and more people will be infected with the illness.",
-        "variables": "contagion,infected people,infection fraction",
-        "label_graphs": "digraph {{\n\"contagion\" -> \"infected people\" [arrowhead = vee] \n\"infected people\"->\"contagion\"[arrowhead = vee] \n\"infection fraction\" -> \"contagion\"[arrowhead = vee]\n}}",
-        "nx_graph": "DiGraph with 3 nodes and 3 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "12",
-        "dynamic_hypothesis": "Someone shouts \u201a\u00c4\u00fafire!\u201a\u00c4\u00f9 in a theater. As people panic, the spread of panic increases. Across the theater hall, more and more people try to rush out. As the spread of panic increases, the total amount of panic skyrockets.",
-        "variables": "spread of panic,panic,spreading fraction",
-        "label_graphs": "digraph {{\n\"spread of panic\" -> \"panic\" [arrowhead = vee] \n\"panic\"->\"spread of panic\"[arrowhead = vee] \n\"spreading fraction\" -> \"spread of panic\"[arrowhead = vee]\n}}",
-        "nx_graph": "DiGraph with 3 nodes and 3 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "13",
-        "dynamic_hypothesis": "Car production builds the inventory of cars at the dealer. A hgiher inventory leads to a lower market price, and lower market prices cause less car production in the future. There is only one negative arrow in the producution loop, so we know that this is negative feedback. This loop describes the effect of the supply curve from your study of ecomomics. If the price were to increase, the retail sale of cars would tend to fall. Retails sales drain the inventory of cars held in stock at the dealership. And a decline in the inventory will cause the dealers to raise their prices in the future.",
-        "variables": "inventory of cars at dealership,market price,car production,retail car sales",
-        "label_graphs": "digraph {{\n\"inventory of cars at dealership\" -> \"market price\" [arrowhead = tee] \n\"market price\"->\"car production\"[arrowhead = vee] \n\"car production\" -> \"inventory of cars at dealership\"[arrowhead = vee]\n\"market price\" -> \"retail car sales\"[arrowhead = tee]\n\"retail car sales\"-> \"inventory of cars at dealership\"[arrowhead = tee]\n}}",
-        "nx_graph": "DiGraph with 4 nodes and 5 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "14",
-        "dynamic_hypothesis": "a larger population leads to a higher number of births, and higher births leads to a higher populatioh. The larger population will tend to have a greater number of deaths.",
-        "variables": "births,population,deaths,brith rate,death rate",
-        "label_graphs": "digraph {{\n\"births\" -> \"population\" [arrowhead = vee] \n\"population\"->\"births\"[arrowhead = vee] \n\"population\"->\"deaths\"[arrowhead = vee] \n\"deaths\"->\"population\"[arrowhead = tee] \n\"brith rate\"->\"births\"[arrowhead = vee] \n\"death rate\"->\"deaths\"[arrowhead = vee] \n}}",
-        "nx_graph": "DiGraph with 5 nodes and 6 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "15",
-        "dynamic_hypothesis": "There is a single positive feedback loop involving the decay of flowers area over time. There is a single negative loop involving the decay of flowered area over time. The third loop acts to slow the rate of growht as the flowers occupy a larger faction of the suitable area.",
-        "variables": "flowered area,growth,decay,empty area,decay rate,growth rate,fraction occupied,suitable area",
-        "label_graphs": "digraph {{\n\"flowered area\" -> \"growth\" [arrowhead = vee] \n\"growth\"->\"flowered area\"[arrowhead = vee] \n\"flowered area\"->\"decay\"[arrowhead = vee] \n\"decay\"->\"flowered area\"[arrowhead = tee] \n\"decay\"->\"empty area\"[arrowhead = vee] \n\"decay rate\"->\"decay\"[arrowhead = vee] \n\"growth\"->\"empty area\"[arrowhead = tee] \n\"growth rate\"->\"growth\"[arrowhead = vee] \n\"fraction occupied\"->\"growth rate\"[arrowhead = tee] \n\"suitable area\"->\"fraction occupied\"[arrowhead = tee] \n\"flowered area\"->\"fraction occupied\"[arrowhead = vee] \n}}",
-        "nx_graph": "DiGraph with 8 nodes and 11 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "16",
-        "dynamic_hypothesis": "The Assignment Backlog is increased by the Assignment Rate and decreased by the Completion Rate. Completion Rate (taskdweek) is Workweek (hours per week) times Productivity (tasks completed per hour of effort) times the Effort Devoted to Assignments. Effort Devoted to Assignments is the effort put in by the student compared to the effort required to complete the assignment with high quality. If work pressure is high, the student may choose to cut corners, skim some reading, skip classes, or give less complete answers to the questions in assignments. For example, if a student works 50 hours per week and can do one task per hour with high quality but only does half the work each assignment requires for a good job, then the completion rate would be (50)(1)(.5) = 25 task equivalents per week.\n\nWork Pressure determines the workweek and effort devoted to assignments. Work pressure depends on the assignment backlog and the Time Remaining to complete the work: The bigger the backlog or the less time remaining, the higher the workweek needs to be to complete the work on time. Time remaining is of course simply the difference between the Due Date and the current Calendar Time. The two most basic options available to a student faced with high work pressure are to (1) work longer hours, thus increasing the completion rate and reducing the backlog (the Midnight Oil loop B l), or (2) work faster by spending less time on each task, speeding the completion rate and reducing the backlog (the Corner Cutting loop B2). Both are negative feedbacks whose goal is to reduce work pressure to a tolerable level.",
-        "variables": "Assignment Backlog,Work Pressure,Workweek,Work Completion Rate,Effort Devoted to Assignments,Assignment Rate,Time Remaining,Due Date,Calendar Time,Productivity",
-        "label_graphs": "digraph{{\n    \n    \"Assignment Backlog\" -> \"Work Pressure\" [arrowhead= vee]\n    \"Work Pressure\" -> \"Workweek\" [arrowhead= vee] \n    \"Workweek\" -> \"Work Completion Rate\"  [arrowhead= tee] \n    \"Work Completion Rate\" -> \"Assignment Backlog\" [arrowhead= tee]\n    \"Work Pressure\" -> \"Effort Devoted to Assignments\" [arrowhead= tee]\n    \"Effort Devoted to Assignments\" -> \"Work Completion Rate\" [arrowhead= tee]\n    \"Assignment Rate\" -> \"Assignment Backlog\" [arrowhead= vee]\n    \"Time Remaining\" -> \"Work Pressure\" [arrowhead= tee] \n    \"Due Date\" -> \"Time Remaining\" [arrowhead= vee] \n    \"Calendar Time\" -> \"Time Remaining\" [arrowhead= tee] \n    \"Productivity\" -> \"Work Completion Rate\"  [arrowhead= vee] \n    \n}}",
-        "nx_graph": "DiGraph with 10 nodes and 11 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "17",
-        "dynamic_hypothesis": "In most firms the advertising budget (supporting ads, trade shows, and the like) grows roughly as the company and revenue grow. Larger advertising budgets have two effects: (1) more potential customers are made aware of the product and choose to enter the market; (2) to the extent the advertising is effective, more of those who are aware and in the market are likely to buy the product offered by the company . Similarly, the larger the revenue of the firm, the greater the sales budget. The more sales representatives, and the greater their skill and experience, the more calls they can make, the more time they can spend with customers, and the more effective their calls will be, increasing both total industry demand. and the share of the total demand won by the firm.",
-        "variables": "Sales,Revenue,Advertising,Market Share,Industry Demand,Direct Sales Capabilities,Product Attractiveness",
-        "label_graphs": "digraph{{\n    \"Sales\" -> \"Revenue\" [arrowhead= vee]\n    \"Revenue\" -> \"Advertising\" [arrowhead= vee] \n    \"Advertising\" -> \"Market Share\"  [arrowhead= vee] \n    \"Market Share\" -> \"Sales\" [arrowhead= vee]\n    \"Advertising\" -> \"Industry Demand\" [arrowhead= vee]\n    \"Industry Demand\" -> \"Sales\" [arrowhead= vee]\n    \"Direct Sales Capabilities\" -> \"Market Share\" [arrowhead= vee]\n    \"Revenue\" -> \"Direct Sales Capabilities\" [arrowhead= vee]\n    \"Direct Sales Capabilities\" -> \"Industry Demand\" [arrowhead= vee] \n    \"Product Attractiveness\" -> \"Industry Demand\" [arrowhead= vee] \n       \"Product Attractiveness\" -> \"Market Share\" [arrowhead= vee] \n}}",
-        "nx_graph": "DiGraph with 7 nodes and 11 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "18",
-        "dynamic_hypothesis": "A high-tech organization grows rapidly because of its ability to introduce new products. As new products grow, revenues grow, the R&D budget grows, and the engineering and research staff grows. Eventually, this burgeoning technical staff becomes increasingly complex and difficult to manage. The management burden often falls on senior engineers, who in turn have less time to spend on engineering. Diverting the most experienced engineers from engineering to management results in longer product development  times, which slow down the introduction of new products.",
-        "variables": "RD budget,Size of Engineering Staff,Management Complexity,Management Burden to senior engineers,Product Development time,New Products,Revenues",
-        "label_graphs": "digraph{{\n   \"RD budget\"-> \"Size of Engineering Staff\" [arrowhead = vee]\n   \"Size of Engineering Staff\" -> \"Management Complexity\" [arrowhead = vee]\n   \"Management Complexity\" -> \"Management Burden to senior engineers\" [arrowhead = vee]\n   \"Management Burden to senior engineers\" -> \"Product Development time\" [arrowhead = vee]\n    \"Product Development time\" -> \"New Products\"[arrowhead = tee]\n     \"New Products\" -> \"Revenues\" [arrowhead = vee]\n    \"Revenues\" -> \"RD budget\" [arrowhead = vee]\n    \"RD budget\" ->  \"New Products\" [arrowhead = vee]\n}}",
-        "nx_graph": "DiGraph with 7 nodes and 8 edges",
-        "Reference ": NaN
-    },
-    {
-        "Case": "19",
-        "dynamic_hypothesis": "Morale grows and talented junior members are highly motivated, expecting to become partners within ten years. But as the firm gets larger, its growth slows. Perhaps it starts to saturate its market niche. Or it might reach a size where the founding partners are no longer interested in sustaining rapid growth. However the growth rate slows, this means less promotion opportunities, more in-fighting among junior members, and an overall decline in morale. The limits to growth structure can be diagrammed as follows.",
-        "variables": "Motivation and Productivity,Growth,Promotion Opportunites,Morale,Staturation of Market Niche,Size of Market Niche",
-        "label_graphs": "digraph{{\n  \"Motivation and Productivity\" -> \"Growth\" [arrowhead = vee]\n   \"Growth\" -> \"Promotion Opportunites\" [arrowhead = vee]\n   \"Promotion Opportunites\" -> \"Morale\" [arrowhead = vee]\n   \"Morale\" -> \"Motivation and Productivity\" [arrowhead = vee]\n    \"Growth\" -> \"Staturation of Market Niche\"[arrowhead = tee]\n     \"Staturation of Market Niche\" -> \"Growth\" [arrowhead = vee]\n    \"Size of Market Niche\" -> \"Staturation of Market Niche\" [arrowhead = tee]\n}}",
-        "nx_graph": "DiGraph with 6 nodes and 7 edges",
-        "Reference ": NaN
-    }
+  {
+    "Case": "1",
+    "dynamic_hypothesis": "The order rate decision, if it is to bring actual inventory towards desired inventory, must increase the order rate as inventory falls below desired inventory. Conversely, as inventory rises toward the desired inventory, order rate should be reduced",
+    "variables": "order rate,inventory,desired inventory,adjustment time",
+    "label_graphs": "digraph {{\n\"order rate\" -> \"inventory\" [arrowhead = vee]\n\"inventory\"->\"order rate\"[arrowhead = tee] \n\"desired inventory\" -> \"order rate\"[arrowhead = vee] \n\"adjustment time\" -> \"order rate\"[arrowhead = tee] \n}}",
+    "nx_graph": "DiGraph with 4 nodes and 4 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "2",
+    "dynamic_hypothesis": "A hot cup of coffee will gradually cool down to room temperature. It's rate of cooling depends on the difference between the temperature of the coffee and the temperature of the room. The greater the difference, the faster the coffee will cool.",
+    "variables": "coffee temperature,discrepancy,cooling rate,room temperature",
+    "label_graphs": "digraph {{\n\"coffee temperature\" -> \"discrepancy\" [arrowhead = vee] \n\"discrepancy\"->\"cooling rate\"[arrowhead = vee] \n\"cooling rate\" -> \"coffee temperature\"[arrowhead = tee] \n\"room temperature\" -> \"discrepancy\"[arrowhead = tee] \n}}",
+    "nx_graph": "DiGraph with 4 nodes and 4 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "3",
+    "dynamic_hypothesis": "The number of E. coli bacteria in the flask influences the reproduction rate which, in turn, influences the number of E. coli bacteria.  Increasing the number of E. coli bacteria will in turn increase the reproduction rate, which compounds the initial increase of the number of E. coli bacteria in the shaking flask.",
+    "variables": "E. Coli Bacteria,reproduction,Reproduction Fraction",
+    "label_graphs": "digraph {{\n\"E. Coli Bacteria\" -> \"reproduction\" [arrowhead = vee] \n\"reproduction\"->\"E. Coli Bacteria\"[arrowhead = vee] \n\"Reproduction Fraction\" -> \"reproduction\"[arrowhead = vee] \n}}",
+    "nx_graph": "DiGraph with 3 nodes and 3 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "4",
+    "dynamic_hypothesis": "The more my uncle smokes, the more addicted he becomes to the nicotine in his cigarettes. After smoking a few cigarettes a long time ago, my uncle began to develop a need for cigarettes. The need caused him to smoke even more, which produced an even stronger need to smoke. The reinforcing behavior in the addiction process is characteristic of positive feedback.",
+    "variables": "smoking,cigarettes smoked,need for cigarettes,addiction time",
+    "label_graphs": "digraph {{\n\"smoking\" -> \"cigarettes smoked\" [arrowhead = vee] \n\"cigarettes smoked\"->\"need for cigarettes\"[arrowhead = vee] \n\"need for cigarettes\" -> \"smoking\"[arrowhead = vee]\n\"addiction time\" -> \"smoking\" [arrowhead = tee]\n}}",
+    "nx_graph": "DiGraph with 4 nodes and 4 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "5",
+    "dynamic_hypothesis": "Negative feedback system is the gradual decay of radioactive nuclei. Every year, a fraction of the total number of radioactive nuclei decays.",
+    "variables": "radioactive nuclei,decay,decay constant",
+    "label_graphs": "digraph {{\n\"radioactive nuclei\" -> \"decay\" [arrowhead = tee] \n\"decay\"->\"radioactive nuclei\"[arrowhead = vee] \n\"decay constant\" -> \"decay\"[arrowhead = vee]\n}}",
+    "nx_graph": "DiGraph with 3 nodes and 3 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "6",
+    "dynamic_hypothesis": "The more I am overweight, the more I diet, which makes me less overweight. As my weight approaches my desired weight, I feel less pressured to diet.",
+    "variables": "dieting,weight,amount overweight,time for dieting to reduce weight,desired weight",
+    "label_graphs": "digraph {{\n\"dieting\" -> \"weight\" [arrowhead = tee] \n\"weight\"->\"amount overweight\"[arrowhead = vee] \n\"amount overweight\" -> \"dieting\"[arrowhead = vee]\n\"time for dieting to reduce weight\" -> \"dieting\"[arrowhead = tee]\n\"desired weight\"->\"amount overweight\"[arrowhead = tee] \n}}",
+    "nx_graph": "DiGraph with 5 nodes and 5 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "7",
+    "dynamic_hypothesis": "The larger the population, the greater the number of births. increases, the faster the population increases. The more the birth rate increases, the faster the population increases.",
+    "variables": "births,rabbit population,birth fraction",
+    "label_graphs": "digraph {{\n\"births\" -> \"rabbit population\" [arrowhead = vee] \n\"rabbit population\"->\"births\"[arrowhead = vee] \n\"birth fraction\" -> \"births\"[arrowhead = vee]\n}}",
+    "nx_graph": "DiGraph with 3 nodes and 3 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "8",
+    "dynamic_hypothesis": "The number of deaths each year is a certain fraction of the skunk population. The death fraction represents the mortality of the population. A large skunk population has a high death rate, which sharply reduces the population. As the population decreases, the death rate becomes less drastic, causing the population to continue to decrease, but not as severely. Eventually, all the skunks die.",
+    "variables": "skunk population,deaths,death fraction",
+    "label_graphs": "digraph {{\n\"skunk population\" -> \"deaths\" [arrowhead = vee] \n\"deaths\"->\"skunk population\"[arrowhead = tee] \n\"death fraction\" -> \"deaths\"[arrowhead = vee]\n}}",
+    "nx_graph": "DiGraph with 3 nodes and 3 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "9",
+    "dynamic_hypothesis": "Interest payments are calculated by multiplying the amount of money in a bank account by a given interest rate. The more money is in the account, the higher the interest payments, which adds even more money into the account. The rich get richer.",
+    "variables": "interest payments,money in bank account,interest rate",
+    "label_graphs": "digraph {{\n\"interest payments\" -> \"money in bank account\" [arrowhead = vee] \n\"money in bank account\"->\"interest payments\"[arrowhead = vee] \n\"interest rate\" -> \"interest payments\"[arrowhead = vee]\n}}",
+    "nx_graph": "DiGraph with 3 nodes and 3 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "10",
+    "dynamic_hypothesis": "Food takes time to digest. The more brownies you have in your stomach, the more brownies you digest, which increases the rate at which brownies leave your stomach. As the number of brownies in your stomach decreases, the digesting rate slows down until all of the brownies have been digested.",
+    "variables": "brownies in stomach,digesting,time to digest",
+    "label_graphs": "digraph {{\n\"brownies in stomach\" -> \"digesting\" [arrowhead = vee] \n\"digesting\"->\"brownies in stomach\"[arrowhead = tee] \n\"time to digest\" -> \"digesting\"[arrowhead = tee]\n}}",
+    "nx_graph": "DiGraph with 3 nodes and 3 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "11",
+    "dynamic_hypothesis": "As the number of infected people increases, so does the rate of contagion. In turn, more and more people will be infected with the illness.",
+    "variables": "contagion,infected people,infection fraction",
+    "label_graphs": "digraph {{\n\"contagion\" -> \"infected people\" [arrowhead = vee] \n\"infected people\"->\"contagion\"[arrowhead = vee] \n\"infection fraction\" -> \"contagion\"[arrowhead = vee]\n}}",
+    "nx_graph": "DiGraph with 3 nodes and 3 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "12",
+    "dynamic_hypothesis": "Someone shouts \u201a\u00c4\u00fafire!\u201a\u00c4\u00f9 in a theater. As people panic, the spread of panic increases. Across the theater hall, more and more people try to rush out. As the spread of panic increases, the total amount of panic skyrockets.",
+    "variables": "spread of panic,panic,spreading fraction",
+    "label_graphs": "digraph {{\n\"spread of panic\" -> \"panic\" [arrowhead = vee] \n\"panic\"->\"spread of panic\"[arrowhead = vee] \n\"spreading fraction\" -> \"spread of panic\"[arrowhead = vee]\n}}",
+    "nx_graph": "DiGraph with 3 nodes and 3 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "13",
+    "dynamic_hypothesis": "Car production builds the inventory of cars at the dealer. A hgiher inventory leads to a lower market price, and lower market prices cause less car production in the future. There is only one negative arrow in the producution loop, so we know that this is negative feedback. This loop describes the effect of the supply curve from your study of ecomomics. If the price were to increase, the retail sale of cars would tend to fall. Retails sales drain the inventory of cars held in stock at the dealership. And a decline in the inventory will cause the dealers to raise their prices in the future.",
+    "variables": "inventory of cars at dealership,market price,car production,retail car sales",
+    "label_graphs": "digraph {{\n\"inventory of cars at dealership\" -> \"market price\" [arrowhead = tee] \n\"market price\"->\"car production\"[arrowhead = vee] \n\"car production\" -> \"inventory of cars at dealership\"[arrowhead = vee]\n\"market price\" -> \"retail car sales\"[arrowhead = tee]\n\"retail car sales\"-> \"inventory of cars at dealership\"[arrowhead = tee]\n}}",
+    "nx_graph": "DiGraph with 4 nodes and 5 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "14",
+    "dynamic_hypothesis": "a larger population leads to a higher number of births, and higher births leads to a higher populatioh. The larger population will tend to have a greater number of deaths.",
+    "variables": "births,population,deaths,brith rate,death rate",
+    "label_graphs": "digraph {{\n\"births\" -> \"population\" [arrowhead = vee] \n\"population\"->\"births\"[arrowhead = vee] \n\"population\"->\"deaths\"[arrowhead = vee] \n\"deaths\"->\"population\"[arrowhead = tee] \n\"brith rate\"->\"births\"[arrowhead = vee] \n\"death rate\"->\"deaths\"[arrowhead = vee] \n}}",
+    "nx_graph": "DiGraph with 5 nodes and 6 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "15",
+    "dynamic_hypothesis": "There is a single positive feedback loop involving the decay of flowers area over time. There is a single negative loop involving the decay of flowered area over time. The third loop acts to slow the rate of growht as the flowers occupy a larger faction of the suitable area.",
+    "variables": "flowered area,growth,decay,empty area,decay rate,growth rate,fraction occupied,suitable area",
+    "label_graphs": "digraph {{\n\"flowered area\" -> \"growth\" [arrowhead = vee] \n\"growth\"->\"flowered area\"[arrowhead = vee] \n\"flowered area\"->\"decay\"[arrowhead = vee] \n\"decay\"->\"flowered area\"[arrowhead = tee] \n\"decay\"->\"empty area\"[arrowhead = vee] \n\"decay rate\"->\"decay\"[arrowhead = vee] \n\"growth\"->\"empty area\"[arrowhead = tee] \n\"growth rate\"->\"growth\"[arrowhead = vee] \n\"fraction occupied\"->\"growth rate\"[arrowhead = tee] \n\"suitable area\"->\"fraction occupied\"[arrowhead = tee] \n\"flowered area\"->\"fraction occupied\"[arrowhead = vee] \n}}",
+    "nx_graph": "DiGraph with 8 nodes and 11 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "16",
+    "dynamic_hypothesis": "The Assignment Backlog is increased by the Assignment Rate and decreased by the Completion Rate. Completion Rate (taskdweek) is Workweek (hours per week) times Productivity (tasks completed per hour of effort) times the Effort Devoted to Assignments. Effort Devoted to Assignments is the effort put in by the student compared to the effort required to complete the assignment with high quality. If work pressure is high, the student may choose to cut corners, skim some reading, skip classes, or give less complete answers to the questions in assignments. For example, if a student works 50 hours per week and can do one task per hour with high quality but only does half the work each assignment requires for a good job, then the completion rate would be (50)(1)(.5) = 25 task equivalents per week.\n\nWork Pressure determines the workweek and effort devoted to assignments. Work pressure depends on the assignment backlog and the Time Remaining to complete the work: The bigger the backlog or the less time remaining, the higher the workweek needs to be to complete the work on time. Time remaining is of course simply the difference between the Due Date and the current Calendar Time. The two most basic options available to a student faced with high work pressure are to (1) work longer hours, thus increasing the completion rate and reducing the backlog (the Midnight Oil loop B l), or (2) work faster by spending less time on each task, speeding the completion rate and reducing the backlog (the Corner Cutting loop B2). Both are negative feedbacks whose goal is to reduce work pressure to a tolerable level.",
+    "variables": "Assignment Backlog,Work Pressure,Workweek,Work Completion Rate,Effort Devoted to Assignments,Assignment Rate,Time Remaining,Due Date,Calendar Time,Productivity",
+    "label_graphs": "digraph{{\n    \n    \"Assignment Backlog\" -> \"Work Pressure\" [arrowhead= vee]\n    \"Work Pressure\" -> \"Workweek\" [arrowhead= vee] \n    \"Workweek\" -> \"Work Completion Rate\"  [arrowhead= tee] \n    \"Work Completion Rate\" -> \"Assignment Backlog\" [arrowhead= tee]\n    \"Work Pressure\" -> \"Effort Devoted to Assignments\" [arrowhead= tee]\n    \"Effort Devoted to Assignments\" -> \"Work Completion Rate\" [arrowhead= tee]\n    \"Assignment Rate\" -> \"Assignment Backlog\" [arrowhead= vee]\n    \"Time Remaining\" -> \"Work Pressure\" [arrowhead= tee] \n    \"Due Date\" -> \"Time Remaining\" [arrowhead= vee] \n    \"Calendar Time\" -> \"Time Remaining\" [arrowhead= tee] \n    \"Productivity\" -> \"Work Completion Rate\"  [arrowhead= vee] \n    \n}}",
+    "nx_graph": "DiGraph with 10 nodes and 11 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "17",
+    "dynamic_hypothesis": "In most firms the advertising budget (supporting ads, trade shows, and the like) grows roughly as the company and revenue grow. Larger advertising budgets have two effects: (1) more potential customers are made aware of the product and choose to enter the market; (2) to the extent the advertising is effective, more of those who are aware and in the market are likely to buy the product offered by the company . Similarly, the larger the revenue of the firm, the greater the sales budget. The more sales representatives, and the greater their skill and experience, the more calls they can make, the more time they can spend with customers, and the more effective their calls will be, increasing both total industry demand. and the share of the total demand won by the firm.",
+    "variables": "Sales,Revenue,Advertising,Market Share,Industry Demand,Direct Sales Capabilities,Product Attractiveness",
+    "label_graphs": "digraph{{\n    \"Sales\" -> \"Revenue\" [arrowhead= vee]\n    \"Revenue\" -> \"Advertising\" [arrowhead= vee] \n    \"Advertising\" -> \"Market Share\"  [arrowhead= vee] \n    \"Market Share\" -> \"Sales\" [arrowhead= vee]\n    \"Advertising\" -> \"Industry Demand\" [arrowhead= vee]\n    \"Industry Demand\" -> \"Sales\" [arrowhead= vee]\n    \"Direct Sales Capabilities\" -> \"Market Share\" [arrowhead= vee]\n    \"Revenue\" -> \"Direct Sales Capabilities\" [arrowhead= vee]\n    \"Direct Sales Capabilities\" -> \"Industry Demand\" [arrowhead= vee] \n    \"Product Attractiveness\" -> \"Industry Demand\" [arrowhead= vee] \n       \"Product Attractiveness\" -> \"Market Share\" [arrowhead= vee] \n}}",
+    "nx_graph": "DiGraph with 7 nodes and 11 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "18",
+    "dynamic_hypothesis": "A high-tech organization grows rapidly because of its ability to introduce new products. As new products grow, revenues grow, the R&D budget grows, and the engineering and research staff grows. Eventually, this burgeoning technical staff becomes increasingly complex and difficult to manage. The management burden often falls on senior engineers, who in turn have less time to spend on engineering. Diverting the most experienced engineers from engineering to management results in longer product development  times, which slow down the introduction of new products.",
+    "variables": "RD budget,Size of Engineering Staff,Management Complexity,Management Burden to senior engineers,Product Development time,New Products,Revenues",
+    "label_graphs": "digraph{{\n   \"RD budget\"-> \"Size of Engineering Staff\" [arrowhead = vee]\n   \"Size of Engineering Staff\" -> \"Management Complexity\" [arrowhead = vee]\n   \"Management Complexity\" -> \"Management Burden to senior engineers\" [arrowhead = vee]\n   \"Management Burden to senior engineers\" -> \"Product Development time\" [arrowhead = vee]\n    \"Product Development time\" -> \"New Products\"[arrowhead = tee]\n     \"New Products\" -> \"Revenues\" [arrowhead = vee]\n    \"Revenues\" -> \"RD budget\" [arrowhead = vee]\n    \"RD budget\" ->  \"New Products\" [arrowhead = vee]\n}}",
+    "nx_graph": "DiGraph with 7 nodes and 8 edges",
+    "Reference ": NaN
+  },
+  {
+    "Case": "19",
+    "dynamic_hypothesis": "Morale grows and talented junior members are highly motivated, expecting to become partners within ten years. But as the firm gets larger, its growth slows. Perhaps it starts to saturate its market niche. Or it might reach a size where the founding partners are no longer interested in sustaining rapid growth. However the growth rate slows, this means less promotion opportunities, more in-fighting among junior members, and an overall decline in morale. The limits to growth structure can be diagrammed as follows.",
+    "variables": "Motivation and Productivity,Growth,Promotion Opportunites,Morale,Staturation of Market Niche,Size of Market Niche",
+    "label_graphs": "digraph{{\n  \"Motivation and Productivity\" -> \"Growth\" [arrowhead = vee]\n   \"Growth\" -> \"Promotion Opportunites\" [arrowhead = vee]\n   \"Promotion Opportunites\" -> \"Morale\" [arrowhead = vee]\n   \"Morale\" -> \"Motivation and Productivity\" [arrowhead = vee]\n    \"Growth\" -> \"Staturation of Market Niche\"[arrowhead = tee]\n     \"Staturation of Market Niche\" -> \"Growth\" [arrowhead = vee]\n    \"Size of Market Niche\" -> \"Staturation of Market Niche\" [arrowhead = tee]\n}}",
+    "nx_graph": "DiGraph with 6 nodes and 7 edges",
+    "Reference ": NaN
+  }
 ]

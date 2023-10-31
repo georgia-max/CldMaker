@@ -1,50 +1,30 @@
-
-import os
-import json
-from pprint import pprint
-from typing import List, Dict, Tuple, Any, Optional, Union
-import glob
-from IPython.display import display
-import ipywidgets as widgets
-
-import numpy as np
 import pandas as pd
-import networkx as nx
-import graphviz
+from langchain.llms import OpenAI
+
+import CldMaker.prompts as pr
+from CldMaker.graphviz_analysis import clean_graphs
+
+# from graphviz_analysis import clean_graphs
 # import tensorflow as tf
 # tf.compat.v1.enable_eager_execution()
 
-import langchain
-from langchain.prompts.prompt import PromptTemplate
-from langchain.prompts.few_shot import FewShotPromptTemplate
-#from langchain.llms import VertexAI
-from langchain.llms import OpenAI
-from langchain.chains import LLMChain, TransformChain, SequentialChain
-from langchain.evaluation.criteria.eval_chain import CriteriaEvalChain
 
-import graphviz_analysis as ga 
-import prompts as pr
-from graphviz_analysis import render_gvz, clean_graphs, check_syntax
-from print_result import print_result_docx
-
-
-
-# One stage appraoch 
-config_v2=[
+# One stage appraoch
+config_v2 = [
     {
-        'input_variables':['dynamic_hypothesis'],
-        'output_variables':['label_graphs'],
-        'prompt_prefix':'''
+        'input_variables': ['dynamic_hypothesis'],
+        'output_variables': ['label_graphs'],
+        'prompt_prefix': '''
        
         '''
     }
 ]
 # One stage appraoch 
-config_v3 =[
+config_v3 = [
     {
-        'input_variables':['dynamic_hypothesis'],
-        'output_variables':['label_graphs'],
-        'prompt_prefix':'''
+        'input_variables': ['dynamic_hypothesis'],
+        'output_variables': ['label_graphs'],
+        'prompt_prefix': '''
         
         First, Render a list of variable names from the text given.
         The variable names shuold be nouns or nouns phrases. 
@@ -85,20 +65,20 @@ config_v3 =[
 #     }
 # ]
 
-config_v4=[
+config_v4 = [
     {
-        'input_variables':['dynamic_hypothesis'],
-        'output_variables':['variables'],
-        'prompt_prefix':'''
+        'input_variables': ['dynamic_hypothesis'],
+        'output_variables': ['variables'],
+        'prompt_prefix': '''
         Render a list of variable names from the text given. Following the rules below:=
         1. The variable names should be nouns or nouns phrases. 
         2. The variable names should have a sense of directionality. 
         '''
     },
     {
-        'input_variables':['variables','dynamic_hypothesis'],
-        'output_variables':['label_graphs'],
-        'prompt_prefix':'''
+        'input_variables': ['variables', 'dynamic_hypothesis'],
+        'output_variables': ['label_graphs'],
+        'prompt_prefix': '''
         The variables' names will be rendered in DOT format. The steps are as follows:
         Step 1: Identify the cause-effect relationship between variable names given the dynamic hypothesis.
         Step 2: [arrowhead=vee] indicates a positive relationship. A negative relationship is indicated by [arrowhead=tee].
@@ -106,6 +86,7 @@ config_v4=[
         '''
     }
 ]
+
 
 def read_dataset(path: str):
     """
@@ -115,34 +96,31 @@ def read_dataset(path: str):
     df = pd.read_json(path)
     return df
 
-def cld_maker(my_variables:"str", my_hypothesis:"str"): 
 
+def cld_maker(my_hypothesis: "str"):
     prompts_df = read_dataset('/Users/Georgia 1/CldMaker-1/CldMaker/prompt_dict.json')
 
     prompts_df['label_graphs'] = prompts_df['label_graphs'].str.replace(
-        '{','{{',regex = False
+        '{', '{{', regex=False
     ).str.replace(
-        '}','}}',regex = False
+        '}', '}}', regex=False
     )
 
     prompts_df['dynamic_hypothesis'] = prompts_df['dynamic_hypothesis'].str.strip('\n').str.strip(' ')
 
     from sklearn.model_selection import train_test_split
-    train_df, test_df = train_test_split(prompts_df, test_size = 80/100.0,
-                                        shuffle=False)
+    train_df, test_df = train_test_split(prompts_df, test_size=80 / 100.0,
+                                         shuffle=False)
 
-
-    llm = OpenAI(temperature=0, openai_api_key = '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')
-
+    llm = OpenAI(temperature=0, openai_api_key='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')
 
     full_chain = pr.make_few_shot_sequential_chain(config_v4, train_df, llm)
 
-    result = full_chain.run({"variables":my_variables, 
-                         "dynamic_hypothesis":my_hypothesis})
-
+    result = full_chain.run({
+        "variables": "",
+        "dynamic_hypothesis": my_hypothesis})
 
     clean_result = clean_graphs(result)
-
 
     return str(clean_result)
 
@@ -164,7 +142,3 @@ def cld_maker(my_variables:"str", my_hypothesis:"str"):
 
 
 # print_result_docx("Results_version4", "img/version4/", "outputs/Result_version4", results_df)
-
-
-
-
