@@ -116,9 +116,12 @@ def cld_maker(my_hypothesis: "str"):
 
     full_chain = pr.make_few_shot_sequential_chain(config_v4, train_df, llm)
 
-    result = full_chain.run({
-        "variables": "",
-        "dynamic_hypothesis": my_hypothesis})
+    result = full_chain.run(
+        {
+            "variables": "",
+            "dynamic_hypothesis": my_hypothesis
+        }
+    )
 
     clean_result = clean_graphs(result)
 
