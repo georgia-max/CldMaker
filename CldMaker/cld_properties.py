@@ -1,14 +1,13 @@
-import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
-import pandas as pd
+
 
 class CLD(nx.MultiDigraph):
-    def __init__(self, data = None, **attr):
+    def __init__(self, data=None, **attr):
         super().__init__(data, **attr)
 
     def __str__(self):
-        graph_properties ={
+        graph_properties = {
             "Nodes": self.number_of_nodes(),
             "Links": self.number_of_links(),
             "Loops": self.get_num_loops(),
@@ -20,7 +19,7 @@ class CLD(nx.MultiDigraph):
             "Polarity Matrix\n": self.get_polarity_matrix()
         }
 
-        properties_str = "\n".join([f"{prop}:{value}"for prop, value in graph_properties.items()])
+        properties_str = "\n".join([f"{prop}:{value}" for prop, value in graph_properties.items()])
         return properties_str
 
     def get_cycle(self):
@@ -28,6 +27,7 @@ class CLD(nx.MultiDigraph):
 
     def get_num_loops(self):
         return len(self.get_cycle())
+
     def get_edge_polarity(self):
         return list(nx.get_edge_attributes(self, "weight").values())
 
@@ -39,18 +39,18 @@ class CLD(nx.MultiDigraph):
 
     def get_cycle_subgraph(self, sg_nodes):
         nxg = CLD()
-        sg_nodes_dict = [(n,{'label':n}) for n in sg_nodes]
+        sg_nodes_dict = [(n, {'label': n}) for n in sg_nodes]
         nxg.add_nodes_from(sg_nodes_dict)
         for i in range(len(sg_nodes_dict)):
             n1 = sg_nodes[i]
-            n2 = sg_nodes[(i+1)%len(sg_nodes)]
+            n2 = sg_nodes[(i + 1) % len(sg_nodes)]
 
-            weight = self.get_edge_data(n1,n2)[0]['weight']
-            nxg.add_edge(n1,n2, weight = weight)
-        return  nxg
+            weight = self.get_edge_data(n1, n2)[0]['weight']
+            nxg.add_edge(n1, n2, weight=weight)
+        return nxg
 
     def get_all_loops(self):
-        loops =[]
+        loops = []
         loop_list = self.get_cycle()
         for loop in loop_list:
             sg = self.get_cycle_subgraph(loop)
@@ -74,8 +74,8 @@ class CLD(nx.MultiDigraph):
     def get_adjacency_matrix(self):
         a = nx.adjacency_matrix(
             self,
-            nodelist = list(self.nodes),
-            weight ='None'
+            nodelist=list(self.nodes),
+            weight='None'
         ).todense(
         )
         return a
@@ -91,5 +91,5 @@ class CLD(nx.MultiDigraph):
 
 
 def get_graph_distance(g1, g2):
-    paths, cost = nx.optimal_edit_paths(g1,g2)
+    paths, cost = nx.optimal_edit_paths(g1, g2)
     return cost
