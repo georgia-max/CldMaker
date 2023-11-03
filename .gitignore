@@ -4,3 +4,4 @@ venv/
 img/
 outputs/
 .pytest_cache/
+.env
