@@ -21,11 +21,22 @@ class OpinionRepository:
 
         return record_id
 
-    def read_option(self, opinion_id):
+    def read_opinion(self, opinion_id):
         cursor = self.connection.cursor()
 
         try:
             cursor.execute("SELECT * FROM opinion WHERE id = %s", (opinion_id,))
+            data = cursor.fetchone()
+        finally:
+            cursor.close()
+
+        return data
+
+    def find_one_opinion_by_user_input(self, user_input):
+        cursor = self.connection.cursor()
+
+        try:
+            cursor.execute("SELECT * FROM opinion WHERE user_input = %s", (user_input,))
             data = cursor.fetchone()
         finally:
             cursor.close()

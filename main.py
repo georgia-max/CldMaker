@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 
 from CldMaker import cld_maker
+from repository.opinion import OpinionRepository
 
 app = Flask(__name__)
 
@@ -11,9 +12,12 @@ def home():
     print(request.args)
     my_hypothesis = request.args.get("my_hypothesis", "")
     if my_hypothesis:
-        result = cld_maker.cld_maker(my_hypothesis)
+        graph_result = cld_maker.cld_maker(my_hypothesis)
     else:
-        result = ""
+        graph_result = ""
+    if graph_result != "":
+        repo = OpinionRepository()
+        repo.create_opinion(my_hypothesis, "", graph_result)
     return (
             """<form action="" method="get">
     
@@ -22,7 +26,7 @@ def home():
                 
             </form>"""
             + "Result: "
-            + result
+            + graph_result
     )
 
 
