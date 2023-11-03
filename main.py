@@ -1,7 +1,9 @@
+import os
+
 from flask import Flask
 from flask import request
 
-from CldMaker import cld_maker
+from CldMaker.cld_maker import GraphGenerator
 from repository.opinion import OpinionRepository
 
 app = Flask(__name__)
@@ -12,7 +14,8 @@ def home():
     print(request.args)
     my_hypothesis = request.args.get("my_hypothesis", "")
     if my_hypothesis:
-        graph_result = cld_maker.cld_maker(my_hypothesis)
+        generator = GraphGenerator(os.getenv('OPENAI_API_KEY'))
+        graph_result = generator.generate_by_hypothesis(my_hypothesis)
     else:
         graph_result = ""
     if graph_result != "":
