@@ -1,10 +1,12 @@
+import os
+
 import pandas as pd
 from langchain.llms import OpenAI
 
 import CldMaker.prompts as pr
 from CldMaker.graphviz_analysis import clean_graphs
 
-# One stage appraoch
+# One stage approach
 config_v2 = [
     {
         'input_variables': ['dynamic_hypothesis'],
@@ -64,7 +66,8 @@ config_v3 = [
 
 class GraphGenerator:
     def __init__(self, openai_api_key: str):
-        self.prompts_df = self.read_dataset('/Users/tp6han/Documents/CldMaker/CldMaker/prompt_dict.json')
+        self.project_root = os.path.dirname(os.path.abspath(__file__))  # Get the directory of the current script
+        self.prompts_df = self.read_dataset(os.path.join(self.project_root, 'prompt_dict.json'))
         self.llm = OpenAI(temperature=0, openai_api_key=openai_api_key)
         self.config_v4 = [
             {
