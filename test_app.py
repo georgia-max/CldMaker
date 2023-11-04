@@ -1,3 +1,5 @@
+from unittest import mock
+
 import pytest
 
 from main import app
@@ -16,10 +18,14 @@ class TestApp:
     def teardown_method(self):
         self.repo.truncate_table()
 
-    def test_home_route(self):
+    @mock.patch('CldMaker.cld_maker.GraphGenerator.generate_by_hypothesis')
+    def test_home_route(self, mock):
         """
         Test that a valid user input is saved in the database and displayed on the page
         """
+        mock.return_value = """
+            digraph {{ "order rate" -> "inventory" [arrowhead = vee] "inventory"->"order rate"[arrowhead = tee] "desired inventory" -> "order rate"[arrowhead = vee] }}
+            """
         client = app.test_client()
         response = client.get('/?my_hypothesis=Test Hypothesis')
         assert response.status_code == 200
