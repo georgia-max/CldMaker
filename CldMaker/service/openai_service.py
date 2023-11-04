@@ -1,6 +1,7 @@
 import os
 
 import pandas as pd
+from langchain import OpenAI
 
 import CldMaker.prompts as pr
 from CldMaker.service.llm_service import LLMServiceInterface
@@ -66,7 +67,8 @@ config_v3 = [
 class OpenAIService(LLMServiceInterface):
 
     def __init__(self):
-        self.openai_api_key = os.getenv('OPENAI_API_KEY')
+        api_key = os.getenv('OPENAI_API_KEY')
+        self.llm = OpenAI(temperature=0, openai_api_key=api_key)
 
         self.project_root = os.path.dirname(os.path.abspath(__file__))  # Get the directory of the current script
         self.prompts_df = self.read_dataset(os.path.join(self.project_root, 'prompt_dict.json'))
@@ -117,5 +119,6 @@ class OpenAIService(LLMServiceInterface):
     def make_few_shot_sequential_chain(self, prompts_df):
         from sklearn.model_selection import train_test_split
         train_df, test_df = train_test_split(prompts_df, test_size=80 / 100.0, shuffle=False)
+
         full_chain = pr.make_few_shot_sequential_chain(self.config_v4, train_df, self.llm)
         return full_chain

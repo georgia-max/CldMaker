@@ -1,8 +1,9 @@
 from CldMaker.graphviz_analysis import clean_graphs
+from CldMaker.service.llm_service import LLMServiceInterface
 
 
 class GraphGenerator:
-    def __init__(self, llm_service):
+    def __init__(self, llm_service: LLMServiceInterface):
         self.llm_service = llm_service
 
     def generate_by_hypothesis(self, my_hypothesis: "str"):

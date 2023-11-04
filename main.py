@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from flask import Flask
 from flask import request
 
@@ -6,6 +7,8 @@ from CldMaker.service.openai_service import OpenAIService
 from repository.opinion import OpinionRepository
 
 app = Flask(__name__)
+
+load_dotenv(override=True)
 
 
 @app.route('/')
