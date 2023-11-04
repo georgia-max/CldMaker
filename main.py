@@ -1,9 +1,8 @@
-import os
-
 from flask import Flask
 from flask import request
 
 from CldMaker.cld_maker import GraphGenerator
+from CldMaker.service.openai_service import OpenAIService
 from repository.opinion import OpinionRepository
 
 app = Flask(__name__)
@@ -14,7 +13,7 @@ def home():
     print(request.args)
     my_hypothesis = request.args.get("my_hypothesis", "")
     if my_hypothesis:
-        generator = GraphGenerator(os.getenv('OPENAI_API_KEY'))
+        generator = GraphGenerator(OpenAIService())
         graph_result = generator.generate_by_hypothesis(my_hypothesis)
     else:
         graph_result = ""
