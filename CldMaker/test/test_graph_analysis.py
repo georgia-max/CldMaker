@@ -43,4 +43,4 @@ def test_render_gvz():
     "adjustment time" -> "order rate"[arrowhead = tee] }
     """
 
-    assert graphviz_analysis.render_gvz(g, "test") == None
+    assert graphviz_analysis.render_gvz(g, "test", "test", "img_output") is None
