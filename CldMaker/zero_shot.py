@@ -1,8 +1,6 @@
-import os
+import pandas as pd
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
-import json
-import pandas as pd
 
 
 class ZeroShotUtility:
@@ -15,13 +13,14 @@ class ZeroShotUtility:
 
     def print_cld(self, dynamic_h):
         prompt_template = ChatPromptTemplate.from_template(self.template)
-        message = prompt_template.format_messages(dynamic_h =dynamic_h)
-        llm = ChatOpenAI(temperature=self.temperature, 
+        message = prompt_template.format_messages(dynamic_h=dynamic_h)
+        llm = ChatOpenAI(temperature=self.temperature,
                          openai_api_key="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")
         response = llm(message)
         print(response.content)
         print("------------------------------------------------------------")
         return response.content
+
 
 def get_prompt_template():
     return """
@@ -34,13 +33,14 @@ def get_prompt_template():
     Dynamic Hypothesis: {dynamic_h}
     """
 
+
 if __name__ == '__main__':
     prompt_template = get_prompt_template()
 
     zeroShot = ZeroShotUtility(template=prompt_template)
 
-    prompts_df = pd.read_csv('CldMaker/dataset/prompts_vars.csv', index_col= 0, dtype= 'str')
-    
+    prompts_df = pd.read_csv('CldMaker/dataset/prompts_vars.csv', index_col=0, dtype='str')
+
     # file1 = open("CldMaker/outputs/zeroshot.txt","w")
 
     # for ind in prompts_df.index:
@@ -48,10 +48,11 @@ if __name__ == '__main__':
     #     print("case", ind)
     #     response = zeroShot.print_cld(dynamic_h=dynamic_h)
     #     file1.write(response + '\n')
-    
+
     # file1.close()
-    
+
     # dynamic_h = get_dynamic_h()
+<<<<<<< HEAD
     dynamic_h = """
         The Assignment Backlog is increased by the Assignment Rate and decreased by the Completion Rate. 
         Completion Rate is Workweek (hours per week) times Productivity (tasks completed per hour of effort) times the Effort Devoted to Assignments. 
@@ -68,3 +69,9 @@ if __name__ == '__main__':
         is to reduce work pressure to a tolerable level.
                 """
     zeroShot.print_cld(dynamic_h=dynamic_h)
+=======
+    dynamic_h = """a larger population leads to a higher number of births, 
+                and higher births leads to a higher populatioh. 
+                The larger population will tend to have a greater number of deaths. """
+    zeroShot.print_cld(dynamic_h=dynamic_h)
+>>>>>>> 74c8c834965a50d09a458fabc7a391b66ef334ae

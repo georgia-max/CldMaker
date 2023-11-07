@@ -1,52 +1,50 @@
-import nltk
-import numpy as np
-import regex as re
 import graphviz
+import regex as re
 from IPython.display import display
 
 
-def check_syntax(r:str):
+def check_syntax(r: str):
     r = r.strip()
-    nq = len(re.findall(re.compile(r'\"'),r))
-    nb = len(re.findall(re.compile(r'\[|\]'),r))
-    if nq%2 != 0 or nb%2 != 0:
+    nq = len(re.findall(re.compile(r'\"'), r))
+    nb = len(re.findall(re.compile(r'\[|\]'), r))
+    if nq % 2 != 0 or nb % 2 != 0:
         return '\n'
-    #TODO check if missing a bracket [ or ] add it to the sentence.
-    elif nb ==0 and '\"' in r:
+    # TODO check if missing a bracket [ or ] add it to the sentence.
+    elif nb == 0 and '\"' in r:
         return '\n'
-    r = re.sub(re.compile('arrowhead='),'arrowhead =',r)
+    r = re.sub(re.compile('arrowhead='), 'arrowhead =', r)
     return r
 
+
 def clean_graphs(g):
-    #remove uneeded text/numbers
+    # remove uneeded text/numbers
     # pattern_string = r'\d\)[Graph:|(\n)?(})?Input:.*|\<(.*?)\>|#include(})?|\*/'
     # pattern_string = r'digraph\s*\{(?:[^}]|\}(?!\s*"))*\}'
     pattern_string = r'digraph\s*\{*\}'
 
-
     ng_pattern = re.compile(pattern_string)
-    g = re.sub(ng_pattern, '',g)
-    #remove trailing spaces
+    g = re.sub(ng_pattern, '', g)
+    # remove trailing spaces
     g = g.strip()
-    g = re.sub(' +', ' ',g)
+    g = re.sub(' +', ' ', g)
     # check if empty i.e just \n characters
-    if set(g) <= set('\n ') or set(g) <=set(' '):
+    if set(g) <= set('\n ') or set(g) <= set(' '):
         return None
 
     # if 2 digraphs, merge them
     dg_pattern = re.compile('digraph {\n|}')
-    disjoint_g = len(re.findall(dg_pattern,g)) >2
+    disjoint_g = len(re.findall(dg_pattern, g)) > 2
     if disjoint_g:
         new_g = 'digraph {\n'
-        new_g += re.sub(dg_pattern, '',g)
+        new_g += re.sub(dg_pattern, '', g)
         new_g += '}'
         g = new_g
 
-    #remove rows with incorrect syntax
+    # remove rows with incorrect syntax
     rows = g.split('\n')
     rows = [check_syntax(row) for row in rows]
     g = '\n'.join(rows)
-    #format closing
+    # format closing
     if g[-1] != '}':
         g += '}'
     if g[-3:] == '->}' or g[-3:] == '-> }':
@@ -54,14 +52,15 @@ def clean_graphs(g):
     return g
 
 
-def render_gvz(dot_source: str, name: str, file_name: str, file_folder:str):
+def render_gvz(dot_source: str, name: str, file_name: str, file_folder: str):
     """
     Renders the graphviz image given DOT format. 
     """
-    g = graphviz.Source(dot_source) 
+    g = graphviz.Source(dot_source)
     display(g)
-    g.render(filename=f'img/{file_folder}/{file_name}_{name}', format = 'png')
+    g.render(filename=f'img/{file_folder}/{file_name}_{name}', format='png')
     return None
+
 
 g = """
 digraph {

@@ -3,3 +3,6 @@ venv/
 *.png
 img/
 outputs/
+.pytest_cache/
+.env
+.idea/
