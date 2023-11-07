@@ -1,3 +1,4 @@
+import graphviz
 from dotenv import load_dotenv
 from flask import Flask
 from flask import request
@@ -15,6 +16,7 @@ load_dotenv(override=True)
 def home():
     print(request.args)
     my_hypothesis = request.args.get("my_hypothesis", "")
+    svg_str = ""
     if my_hypothesis:
         generator = GraphGenerator(OpenAIService())
         graph_result = generator.generate_by_hypothesis(my_hypothesis)
@@ -23,6 +25,9 @@ def home():
     if graph_result != "":
         repo = OpinionRepository()
         repo.create_opinion(my_hypothesis, "", graph_result)
+        # Convert graphviz src to svg
+        g_src = graphviz.Source(graph_result)
+        svg_str = g_src.pipe(format="svg", encoding='utf-8')
     return (
             """<form action="" method="get">
     
@@ -31,7 +36,12 @@ def home():
                 
             </form>"""
             + "Result: "
-            + graph_result
+            + graph_result +
+            f"""
+            <div class="graphviz-output">
+            {svg_str}
+            </div>
+            """
     )
 
 

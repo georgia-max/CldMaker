@@ -1,3 +1,4 @@
+import re
 from unittest import mock
 
 import pytest
@@ -36,3 +37,26 @@ class TestApp:
         # Check if the user input and result are saved in the database
         record = self.repo.find_one_opinion_by_user_input("Test Hypothesis")  # Replace with actual implementation
         assert record is not None
+
+    @mock.patch('CldMaker.cld_maker.GraphGenerator.generate_by_hypothesis')
+    def test_render_graphviz(self, mock):
+        """
+        Test that a valid user input is converted to a graphviz image
+        """
+        mock.return_value = """
+            digraph {{ "order rate" -> "inventory" [arrowhead = vee] "inventory"->"order rate"[arrowhead = tee] "desired inventory" -> "order rate"[arrowhead = vee] }}
+            """
+        client = app.test_client()
+
+        response = client.get('/?my_hypothesis=Test Hypothesis')
+
+        # assert response has svg tag and 3 title html tags
+        assert b"</svg>" in response.data
+        assert b"<title>desired inventory</title>" in response.data
+        assert b"<title>order rate</title>" in response.data
+        assert b"<title>inventory</title>" in response.data
+
+        # Define the regular expression pattern
+        pattern = r'<g id="[^\"]*" class="node">'
+        matches = re.findall(pattern, response.data.decode("utf-8"))
+        assert len(matches) == 3  # there are 3 nodes (topics/causes) by the generated diagraph string
