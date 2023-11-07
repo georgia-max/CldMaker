@@ -28,7 +28,7 @@ def get_prompt_template():
     
     I want you to play the role of a system dynamics modeler.
 
-    Given a dynamic hypothesis, what is the casual loop diagram?
+    Given a dynamic hypothesis, please provide the casual loop diagram?
     Return the answer in a text format.
     
     Dynamic Hypothesis: {dynamic_h}
@@ -52,7 +52,19 @@ if __name__ == '__main__':
     # file1.close()
     
     # dynamic_h = get_dynamic_h()
-    dynamic_h = """a larger population leads to a higher number of births, 
-                and higher births leads to a higher populatioh. 
-                The larger population will tend to have a greater number of deaths. """
+    dynamic_h = """
+        The Assignment Backlog is increased by the Assignment Rate and decreased by the Completion Rate. 
+        Completion Rate is Workweek (hours per week) times Productivity (tasks completed per hour of effort) times the Effort Devoted to Assignments. 
+        Effort Devoted to Assignments is the effort put in by the student compared to the effort required to complete the assignment with high quality. 
+        If work pressure is high, the student may choose to cut corners, skim some reading, skip classes, or give less complete answers to the questions in assignments. 
+        For example, if a student works 50 hours per week and can do one task per hour with high quality but only does half the work each assignment requires for a good job, 
+        then the completion rate would be (50)(1)(.5) = 25 task equivalents per week.
+
+        Work Pressure determines the workweek and effort devoted to assignments. 
+        Work pressure depends on the assignment backlog and the Time Remaining to complete the work: The bigger the backlog or the less time remaining,
+        the higher the workweek needs to be to complete the work on time. Time remaining is of course simply the difference between the Due Date and the current Calendar Time. 
+        The two most basic options available to a student faced with high work pressure are to first, work longer hours, thus increasing the completion rate and reducing the backlog , 
+        or second, work faster by spending less time on each task, speeding the completion rate and reducing the backlog. Both are negative feedbacks whose goal 
+        is to reduce work pressure to a tolerable level.
+                """
     zeroShot.print_cld(dynamic_h=dynamic_h)

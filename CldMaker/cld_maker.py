@@ -60,30 +60,30 @@ config_v3 =[
 
 # Second stage appraoch
 
-# config =[
-#     {
-#         'input_variables':['dynamic_hypothesis'],
-#         'output_variables':['variables'],
-#         'prompt_prefix':'''
-#         Render a list of variable names from the text given. Following the rules below: 
+config =[
+    {
+        'input_variables':['dynamic_hypothesis'],
+        'output_variables':['variables'],
+        'prompt_prefix':'''
+        Render a list of variable names from the text given. Following the rules below: 
 
-#         1. The variable names should be nouns or nouns phrases. 
-#         2. The variable names should have a sense of directionality. 
-#         '''
-#     },
-#     {
-#         'input_variables':['variables','dynamic_hypothesis'],
-#         'output_variables':['label_graphs'],
-#         'prompt_prefix':'''
-#         Render a dot format of variable names from the text given. Following the steps below:
+        1. The variable names should be nouns or nouns phrases. 
+        2. The variable names should have a sense of directionality. 
+        '''
+    },
+    {
+        'input_variables':['variables','dynamic_hypothesis'],
+        'output_variables':['label_graphs'],
+        'prompt_prefix':'''
+        Render a dot format of variable names from the text given. Following the steps below:
 
-#         Step 1. Identify the relative pairs among the given variable names and the dynamic hypothesis. 
-#         Step 2. Identify whether the cause-effect relationship between the relative pairs is positive or negative.
-#         Step 3. A positive relationship is indicated by [arrowhead=vee]. A negative relationship is indicated [arrowhead=tee].
-#         Step 4. Create a DOT format based on the variable names and the cause-effect relationship. The DOT format starts with: digraph {}
-#         '''
-#     }
-# ]
+        Step 1. Identify the relative pairs among the given variable names and the dynamic hypothesis. 
+        Step 2. Identify whether the cause-effect relationship between the relative pairs is positive or negative.
+        Step 3. A positive relationship is indicated by [arrowhead=vee]. A negative relationship is indicated [arrowhead=tee].
+        Step 4. Create a DOT format based on the variable names and the cause-effect relationship. The DOT format starts with: digraph {}
+        '''
+    }
+]
 
 config_v4=[
     {
@@ -135,7 +135,7 @@ def cld_maker(my_variables:"str", my_hypothesis:"str"):
     llm = OpenAI(temperature=0, openai_api_key = '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')
 
 
-    full_chain = pr.make_few_shot_sequential_chain(config_v4, train_df, llm)
+    full_chain = pr.make_few_shot_sequential_chain(config_v3, train_df, llm)
 
     result = full_chain.run({"variables":my_variables, 
                          "dynamic_hypothesis":my_hypothesis})
