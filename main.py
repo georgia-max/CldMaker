@@ -30,9 +30,12 @@ def home():
         svg_str = g_src.pipe(format="svg", encoding='utf-8')
     return (
             """<form action="" method="get">
+                <label for="my_hypothesis">Please enter your dynamic hypothesis in the text box below:</label>
+                <br>
     
-                Hypothesis: <input type="text" name="my_hypothesis" style="height: 300px ">
-                <input type="submit" value="Convert" >
+                Hypothesis: <input type="text" name="my_hypothesis" style="height: 200px; width: 700px; ">
+                <br>
+                <input type="submit" value="Convert" style="margin-left: 10px;">
                 
             </form>"""
             + "Result: "
