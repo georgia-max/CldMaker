@@ -1,0 +1,29 @@
+__pycache__
+.pytest_cache/
+.idea/
+.vscode/
+*.pyc
+*.pyo
+*.pyd
+**/*.pyc
+**/*.txt
+**/*.ipynb
+README.md
+
+# ignore folder
+k8s/
+img/
+Paper/
+venv/
+
+# ignore .git
+.gitignore
+.git/
+
+# ignore test files
+**/test_*.py
+CldMaker/test
+
+# ignore POC experimental-related files
+CldMaker/dataset/
+CldMaker/.ipynb_checkpoints
