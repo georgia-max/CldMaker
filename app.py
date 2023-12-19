@@ -1,7 +1,10 @@
+import os
+
 import graphviz
 from dotenv import load_dotenv
 from flask import Flask
 from flask import request
+from flask_migrate import Migrate
 
 from CldMaker.cld_maker import GraphGenerator
 from CldMaker.service.openai_service import OpenAIService
@@ -11,6 +14,29 @@ from repository.hypothesis import HypothesisRepository
 app = Flask(__name__)
 
 load_dotenv(override=True)
+
+# WEBSITE_HOSTNAME exists only in production environment
+if 'WEBSITE_HOSTNAME' not in os.environ:
+    # local development, where we'll use environment variables
+    print("Loading config.development and environment variables from .env file.")
+    app.config.from_object('azureproject.development')
+else:
+    # production
+    print("Loading config.production.")
+    app.config.from_object('azureproject.production')
+
+app.config.update(
+    SQLALCHEMY_DATABASE_URI=app.config.get('DATABASE_URI'),
+    SQLALCHEMY_TRACK_MODIFICATIONS=False,
+)
+# Initialize the database connection
+db.init_app(app)
+
+# Enable Flask-Migrate commands "flask db init/migrate/upgrade" to work
+migrate = Migrate(app, db)
+# Create tables when the app starts
+with app.app_context():
+    db.create_all()
 
 
 @app.route('/')
