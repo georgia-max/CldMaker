@@ -2,9 +2,9 @@ import os
 
 import graphviz
 from dotenv import load_dotenv
-from flask import Flask
-from flask import request
+from flask import Flask, render_template, request
 from flask_migrate import Migrate
+from markupsafe import Markup
 
 from CldMaker.cld_maker import GraphGenerator
 from CldMaker.service.openai_service import OpenAIService
@@ -39,10 +39,12 @@ with app.app_context():
     db.create_all()
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    print(request.args)
-    my_hypothesis = request.args.get("my_hypothesis", "")
+    if request.method == 'GET':
+        return render_template('index.html')
+
+    my_hypothesis = request.form.get("my_hypothesis", "")
     svg_str = ""
     if my_hypothesis:
         generator = GraphGenerator(OpenAIService())
@@ -55,24 +57,9 @@ def home():
         # Convert graphviz src to svg
         g_src = graphviz.Source(graph_result)
         svg_str = g_src.pipe(format="svg", encoding='utf-8')
-    return (
-            """<form action="" method="get">
-                <label for="my_hypothesis">Please enter your dynamic hypothesis in the text box below:</label>
-                <br>
-    
-                Hypothesis: <input type="text" name="my_hypothesis" style="height: 200px; width: 700px; ">
-                <br>
-                <input type="submit" value="Convert" style="margin-left: 10px;">
-                
-            </form>"""
-            + "Result: "
-            + graph_result +
-            f"""
-            <div class="graphviz-output">
-            {svg_str}
-            </div>
-            """
-    )
+        removed_prefix_str = svg_str[svg_str.index("<svg"):]
+        final_svg_str = ''.join(removed_prefix_str.splitlines())
+    return render_template('index.html', graph_result=graph_result, svg_str=Markup(final_svg_str))
 
 
 if __name__ == '__main__':
