@@ -5,7 +5,8 @@ from flask import request
 
 from CldMaker.cld_maker import GraphGenerator
 from CldMaker.service.openai_service import OpenAIService
-from repository.opinion import OpinionRepository
+from models import db
+from repository.hypothesis import HypothesisRepository
 
 app = Flask(__name__)
 
@@ -23,8 +24,8 @@ def home():
     else:
         graph_result = ""
     if graph_result != "":
-        repo = OpinionRepository()
-        repo.create_opinion(my_hypothesis, "", graph_result)
+        repo = HypothesisRepository()
+        repo.create_hypothesis(my_hypothesis, "", graph_result)
         # Convert graphviz src to svg
         g_src = graphviz.Source(graph_result)
         svg_str = g_src.pipe(format="svg", encoding='utf-8')

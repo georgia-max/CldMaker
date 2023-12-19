@@ -3,8 +3,8 @@ from unittest import mock
 
 import pytest
 
-from main import app
-from repository.opinion import OpinionRepository
+from app import app
+from repository.hypothesis import HypothesisRepository
 
 
 @pytest.fixture()
@@ -14,7 +14,7 @@ def client(app):
 
 class TestApp:
     def setup_method(self):
-        self.repo = OpinionRepository()
+        self.repo = HypothesisRepository()
 
     def teardown_method(self):
         self.repo.truncate_table()
@@ -35,7 +35,7 @@ class TestApp:
         assert b"Result: " in response.data
 
         # Check if the user input and result are saved in the database
-        record = self.repo.find_one_opinion_by_user_input("Test Hypothesis")  # Replace with actual implementation
+        record = self.repo.find_one_hypothesis_by_user_input("Test Hypothesis")  # Replace with actual implementation
         assert record is not None
 
     @mock.patch('CldMaker.cld_maker.GraphGenerator.generate_by_hypothesis')
