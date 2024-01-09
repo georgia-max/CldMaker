@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Converter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            text-align: center;
+        }
+
+        .graphviz-output {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px; /* Adjust the height as needed */
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <form method="post" action="{{ url_for('home') }}" id="graphForm">
+        <label for="my_hypothesis">Please enter your dynamic hypothesis in the text box below:</label>
+        <br>
+        <textarea name="my_hypothesis" style="height: 200px; width: 400px;"></textarea>
+        <br>
+        <input type="submit" class="btn btn-primary" value="Convert" style="margin-top: 10px;">
+    </form>
+
+    {% if graph_result %}
+        <div>
+            {{ graph_result }}
+        </div>
+    {% endif %}
+    {% if svg_str %}
+        <div class="graphviz-output" id="graphOutput">
+
+            Result:
+            {{ svg_str }}
+
+        </div>
+    {% endif %}
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

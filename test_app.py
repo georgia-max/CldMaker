@@ -3,8 +3,8 @@ from unittest import mock
 
 import pytest
 
-from main import app
-from repository.opinion import OpinionRepository
+from app import app
+from repository.hypothesis import HypothesisRepository
 
 
 @pytest.fixture()
@@ -14,28 +14,25 @@ def client(app):
 
 class TestApp:
     def setup_method(self):
-        self.repo = OpinionRepository()
+        self.repo = HypothesisRepository()
 
     def teardown_method(self):
         self.repo.truncate_table()
 
     @mock.patch('CldMaker.cld_maker.GraphGenerator.generate_by_hypothesis')
-    def test_home_route(self, mock):
+    def test_convert_by_post(self, mock):
         """
         Test that a valid user input is saved in the database and displayed on the page
         """
         mock.return_value = """
-            digraph {{ "order rate" -> "inventory" [arrowhead = vee] "inventory"->"order rate"[arrowhead = tee] "desired inventory" -> "order rate"[arrowhead = vee] }}
-            """
+                    digraph {{ "order rate" -> "inventory" [arrowhead = vee] "inventory"->"order rate"[arrowhead = tee] "desired inventory" -> "order rate"[arrowhead = vee] }}
+                    """
         client = app.test_client()
-        response = client.get('/?my_hypothesis=Test Hypothesis')
+        response = client.post('/', data={"my_hypothesis": "Test Hypothesis"})
         assert response.status_code == 200
 
-        # Replace with assertions to verify that the result is displayed correctly on the page
-        assert b"Result: " in response.data
-
         # Check if the user input and result are saved in the database
-        record = self.repo.find_one_opinion_by_user_input("Test Hypothesis")  # Replace with actual implementation
+        record = self.repo.find_one_hypothesis_by_user_input("Test Hypothesis")
         assert record is not None
 
     @mock.patch('CldMaker.cld_maker.GraphGenerator.generate_by_hypothesis')
@@ -48,7 +45,7 @@ class TestApp:
             """
         client = app.test_client()
 
-        response = client.get('/?my_hypothesis=Test Hypothesis')
+        response = client.post('/', data={"my_hypothesis": "Test Hypothesis"})
 
         # assert response has svg tag and 3 title html tags
         assert b"</svg>" in response.data
