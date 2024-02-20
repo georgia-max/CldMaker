@@ -68,7 +68,7 @@ class OpenAIService(LLMServiceInterface):
 
     def __init__(self):
         api_key = os.getenv('OPENAI_API_KEY')
-        self.llm = OpenAI(temperature=0, openai_api_key=api_key)
+        self.llm = OpenAI(temperature=0, openai_api_key=api_key, model= "gpt-3.5-turbo-instruct")
 
         self.project_root = os.path.dirname(os.path.abspath(__file__))  # Get the directory of the current script
         self.prompts_df = self.read_dataset(os.path.join(self.project_root, 'prompt_dict.json'))
