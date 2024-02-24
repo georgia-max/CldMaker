@@ -34,7 +34,7 @@
         <br>
         <textarea name="my_hypothesis" style="height: 200px; width: 400px;"></textarea>
         <br>
-        <input type="submit" class="btn btn-primary" value="Convert" style="margin-top: 10px;">
+        <input type="submit" class="btn btn-primary" value="Convert" style="margin: 2em;">
     </form>
 
     {% if graph_result %}
@@ -49,6 +49,12 @@
             {{ svg_str }}
 
         </div>
+    {% else %}
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
     {% endif %}
 
 </div>
