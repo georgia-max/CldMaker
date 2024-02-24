@@ -61,10 +61,9 @@ def home():
             svg_str = g_src.pipe(format="svg", encoding='utf-8')
             removed_prefix_str = svg_str[svg_str.index("<svg"):]
             final_svg_str = ''.join(removed_prefix_str.splitlines())
-            return render_template('index.html', graph_result=graph_result, svg_str=Markup(final_svg_str))
         except graphviz.CalledProcessError as e:
             print("Error occurred while converting graphviz src to svg: ", e)
-            return render_template('index.html', graph_result=graph_result, svg_str=svg_str)
+            return render_template('index.html', error=graph_result)
 
     return render_template('index.html', graph_result=graph_result, svg_str=Markup(final_svg_str))
 
