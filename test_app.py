@@ -57,3 +57,15 @@ class TestApp:
         pattern = r'<g id="[^\"]*" class="node">'
         matches = re.findall(pattern, response.data.decode("utf-8"))
         assert len(matches) == 3  # there are 3 nodes (topics/causes) by the generated diagraph string
+
+    @mock.patch('CldMaker.cld_maker.GraphGenerator.generate_by_hypothesis')
+    def test_no_graph_can_be_created(self, mock):
+        """
+        Test that a respnse is returned when no graph can be created
+        """
+        mock.return_value = "No variables were given, so no graph can be created."
+        client = app.test_client()
+
+        response = client.post('/', data={"my_hypothesis": "Test Hypothesis no graph results"})
+        
+        assert response.status_code == 200
