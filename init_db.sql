@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS question (
     question_text TEXT
 );
 
--- Create the "hypothesis" table
-CREATE TABLE IF NOT EXISTS hypothesis (
+-- Create the "opinion" table
+CREATE TABLE IF NOT EXISTS opinion (
     id SERIAL PRIMARY KEY,
     user_input TEXT,
     predicted_var TEXT,
