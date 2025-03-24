@@ -7,6 +7,7 @@
 
 The process of transforming a Dynamic Hypothesis into a Casual Loop Diagram (CLD) that articulates the casual strucuture of the system is a key step in the development of System Dynamics (SD) models. In this repository, we present a method for automating the translation of dynamic hypothesis (text) into CLDs using Large Language Models. 
 
+Check out the paper here: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4906094 
 
 ## Table of Contents
 
